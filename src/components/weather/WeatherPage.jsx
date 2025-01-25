@@ -45,48 +45,49 @@ const WeatherPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-amber-700 text-white">
-      <div className="text-gray-800 rounded-2xl shadow-lg p-6 w-80 bg-[rgb(255,255,255)]">
-        <div className="flex items-center mb-6">
-          <input
-            type="text"
-            placeholder="Enter city"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            className="flex-1 p-2 border rounded-l-md focus:outline-none"
-          />
-          <button
-            onClick={handleGetWeather}
-            disabled={loading}
-            className="bg-[rgb(0,123,255)] text-white p-2 rounded-r-md hover:bg-[rgb(0,105,217)] transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
-          >
-            <FiSearch size={20} />
-          </button>
-        </div>
-
-        {error && <p className="text-red-500 text-center">{error.message}</p>}
-
-        {weather && (
-          <div className="text-center">
-            {renderWeatherImage()}
-            <h2 className="text-4xl font-bold mb-2">{weather.main.temp}°C</h2>
-            <p className="text-lg mb-4">{weather.name}</p>
-            <div className="flex justify-between text-sm">
-              <div className="flex items-center gap-2">
-                <span className="font-medium">{weather.main.humidity}%</span>
-                <span>Humidity</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-medium">{weather.wind.speed} km/h</span>
-                <span>Wind Speed</span>
-              </div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-amber-700 text-white px-4">
+    <div className="text-gray-800 rounded-2xl shadow-lg p-6 w-full sm:w-96 lg:w-1/3 bg-[rgb(255,255,255)]">
+      <div className="flex items-center mb-6">
+        <input
+          type="text"
+          placeholder="Enter city"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          className="flex-1 p-2 border rounded-l-md focus:outline-none"
+        />
+        <button
+          onClick={handleGetWeather}
+          disabled={loading}
+          className="bg-[rgb(0,123,255)] text-white p-2 rounded-r-md hover:bg-[rgb(0,105,217)] transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
+        >
+          <FiSearch size={20} />
+        </button>
+      </div>
+  
+      {error && <p className="text-red-500 text-center">{error.message}</p>}
+  
+      {weather && (
+        <div className="text-center">
+          {renderWeatherImage()}
+          <h2 className="text-4xl font-bold mb-2">{weather.main.temp}°C</h2>
+          <p className="text-lg mb-4">{weather.name}</p>
+          <div className="flex flex-col sm:flex-row justify-between text-sm gap-4 sm:gap-0">
+            <div className="flex items-center gap-2">
+              <span className="font-medium">{weather.main.humidity}%</span>
+              <span>Humidity</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="font-medium">{weather.wind.speed} km/h</span>
+              <span>Wind Speed</span>
             </div>
           </div>
-        )}
-
-        {loading && <p className="text-center text-lg">Loading...</p>}
-      </div>
+        </div>
+      )}
+  
+      {loading && <p className="text-center text-lg">Loading...</p>}
     </div>
+  </div>
+  
   );
 };
 
